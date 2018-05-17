@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <script src="/socket-io"></script>
+    <script src="/public/js/app.js"></script>
+    <link rel="icon" type="image/png" href="public/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="public/favicon-16x16.png" sizes="16x16" />
+    <title>DEBUGGER SERVER</title>
+  </head>
+  <body>
+    <h1>OPEN CONSOLE</h1>
+    <label>
+      <h2>UPLOAD LOG</h2>
+      <input type="file" data-upload />
+    </label>
+    <div>
+      <h2>CONNECTED DEVICES:</h2>
+      <div data-device-list>
+      </div>
+      <h2>FILTER LOGS:</h2>
+      <input data-search />
+      <div data-device-details></div>
+    </div>
+    <script>
+      window.server_url = '{{url}}';
+    </script>
+  </body>
+</html>
