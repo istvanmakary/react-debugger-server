@@ -1,6 +1,6 @@
 # Debugger Server
 
-**This project is belongs to [react-native-debugger](https://github.com/istvanmakary/react-native-debugger).**
+**This project is an extension for [react-native-debugger](https://github.com/istvanmakary/react-native-debugger), to use it you need to install and configure react-native-debugger**
 
 ![Debugger server UI](http://makary.hu/debugger-server.jpg)
 
