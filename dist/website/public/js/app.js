@@ -88,7 +88,7 @@ function renderDevices() {
     }
 }
 var processSingleItem = function (data) {
-    var _a = data.events, events = _a === void 0 ? [] : _a, device = data.device;
+    var _a = data.events, events = _a === void 0 ? [] : _a, _b = data.device, device = _b === void 0 ? {} : _b;
     events.forEach(function (event) {
         store[device.id] = (store[device.id] || []).concat([
             event,

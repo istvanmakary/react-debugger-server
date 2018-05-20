@@ -118,7 +118,7 @@ function renderDevices() {
 const processSingleItem = (data) => {
   const {
     events = [],
-    device
+    device = {},
   } = data;
   events.forEach((event) => {
     store[device.id] = [
