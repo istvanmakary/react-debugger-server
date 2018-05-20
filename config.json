@@ -1,5 +1,7 @@
 {
-  "url": "http://localhost:3030/",
+  "url": "https://react-native-debugger.herokuapp.com/",
   "limit": 100,
-  "port": 3030
+  "port": 3030,
+  "user": "admin",
+  "password": "Secret123"
 }

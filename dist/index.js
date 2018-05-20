@@ -48,6 +48,7 @@ var bodyParser = require('body-parser');
 var socketIO = require('socket.io');
 var Config = require('../config.json');
 var storage = require('node-persist');
+var basicAuth = require('express-basic-auth');
 process.chdir('./dist');
 var template = fs.readFileSync('./website/template.html', 'utf8')
     .replace(/\{\{url\}\}/, Config.url);
@@ -138,11 +139,19 @@ var Server = /** @class */ (function () {
     Server.prototype.setupServer = function () {
         var app = express();
         app.use(bodyParser.json({ limit: '50mb' }));
+        app.use(basicAuth({
+            users: (_a = {},
+                _a[Config.user] = Config.password,
+                _a),
+            challenge: true,
+            realm: 'Imb4T3st4pp',
+        }));
         app.use('/public', express.static(path.join(__dirname, 'website/public')));
         app.get('/', Server.returnTemplate);
         app.get('/socket-io', Server.sendSocketIOJS);
         app.post('/log', this.log);
         this.httpServer = app.listen(port, function () { return console.log("App is listening on " + port); });
+        var _a;
     };
     Server.prototype.setupSocket = function () {
         var io = socketIO(this.httpServer);

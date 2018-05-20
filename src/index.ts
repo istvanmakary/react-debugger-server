@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const socketIO = require('socket.io');
 const Config = require('../config.json');
 const storage = require('node-persist');
+const basicAuth = require('express-basic-auth');
 
 process.chdir('./dist');
 
@@ -42,7 +43,13 @@ class Server {
   setupServer() {
     const app = express();
     app.use(bodyParser.json({limit: '50mb'}));
-
+    app.use(basicAuth({
+        users: { 
+          [Config.user]: Config.password, 
+        },
+        challenge: true,
+        realm: 'Imb4T3st4pp',
+    }));
     app.use('/public', express.static(path.join(__dirname, 'website/public')));
     app.get('/', Server.returnTemplate);
     app.get('/socket-io', Server.sendSocketIOJS);
